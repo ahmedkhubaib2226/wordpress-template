@@ -21,6 +21,11 @@ class AQUILA_THEME {
 		Sidebars::get_instance();
 		Blocks::get_instance();
 		Block_Patterns::get_instance();
+		Loadmore_Posts::get_instance();
+		Loadmore_Single::get_instance();
+		Register_Post_Types::get_instance();
+		Register_Taxonomies::get_instance();
+		Archive_Settings::get_instance();
 
 		$this->setup_hooks();
 	}
