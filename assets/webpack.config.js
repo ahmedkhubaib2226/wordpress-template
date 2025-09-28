@@ -17,6 +17,8 @@ const IMG_DIR = path.resolve( __dirname, 'src/img' );
 const LIB_DIR = path.resolve( __dirname, 'src/library' );
 const BUILD_DIR = path.resolve( __dirname, 'build' );
 
+
+// PATH FOR ALL JS DIRECTORY
 const entry = {
 	main: JS_DIR + '/main.js',
 	single: JS_DIR + '/single.js',

@@ -78,8 +78,11 @@ class Assets {
 
 		// If search page.
 		if( is_page('search') ) {
+
+			// Filter the data.
 			$filters_data = get_filters_data();
 			wp_enqueue_script( 'search-js' );
+			// Attach the data with Search-js script.
 			wp_localize_script( 'search-js', 'search_settings',
 				[
 					'rest_api_url' => home_url( '/wp-json/af/v1/search' ),
