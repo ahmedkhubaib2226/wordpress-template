@@ -27,6 +27,7 @@ get_header();
             global $product; // Get the global product object
         ?>
             <li class="mx-5 list-group-item">
+              <h4 class="px-5 pt-5 font-weight-bold"><?php the_title(); ?></h4>
               <div class="container">
                 <div class="row">
                   <div class="col-sm">
@@ -36,18 +37,12 @@ get_header();
                     <?php endif; ?>
 
                     <!-- Display product thumbnail -->
-                    
-                      <?php if (has_post_thumbnail()) : ?>
-                      <a href="<?php echo get_template_directory_uri() . '/container.php' ?>">
+                    <?php if (has_post_thumbnail()) : ?>
                       <?php the_post_thumbnail('shop_catalog', array('class' => 'w-100 pt-5')); ?>
-                      </a>  
                     <?php endif; ?>
-                    
                   </div>
 
                   <div class="col-sm">
-                    <!-- the title tag -->
-                    <h5 class="pt-5 font-weight-bold"><?php the_title(); ?></h5>
                     <h5>External Dimensions</h5>
                     <!-- Get and display custom field values -->
                     <?php if (get_field('ex_length')) : ?>
@@ -59,14 +54,37 @@ get_header();
                     <?php if (get_field('external_dimensions_height')) : ?>
                       <h5>Height : <span><?php the_field('external_dimensions_height'); ?></span></h5>
                     <?php endif; ?>
+
+                    <h5>Internal Dimensions</h5>
+                    <?php if (get_field('internal_dimensions_length')) : ?>
+                      <h5>Length : <span><?php the_field('internal_dimensions_length'); ?></span></h5>
+                    <?php endif; ?>
+                    <?php if (get_field('internal_dimensions_width')) : ?>
+                      <h5>Width : <span><?php the_field('internal_dimensions_width'); ?></span></h5>
+                    <?php endif; ?>
+                    <?php if (get_field('internal_dimensions_height')) : ?>
+                      <h5>Height : <span><?php the_field('internal_dimensions_height'); ?></span></h5>
+                    <?php endif; ?>
+                    
+                    <h5>Max Growth Width</h5>
+                    <?php if (get_field('max_growth_width')) : ?>
+                      <h5><span><?php the_field('max_growth_width'); ?></span></h5>
+                    <?php endif; ?>
+                    <h5>Payload Capacity : <span><?php the_field('payload_capacity'); ?></span></h5>
+                    <h5>Volume : <span><?php the_field('volume'); ?></span></h5>
+                    <h5>Condition : <span><?php the_field('condition'); ?></span></h5>
+                    <h5>Material : <span><?php the_field('material'); ?></span></h5>
+                  </div>
+
+                  <div class="col-sm">
                     <!-- Display product price -->
-                    <h5><?php the_field('price'); ?></h5>
+                    <h3><?php the_field('price'); ?></h3>
                     <?php if (get_field('stock_status')) : ?>
                       <h5><?php the_field('stock_status'); ?></h5>
-                   
                     <?php endif; ?>
-                    </div>
-
+                    <!-- Display add to cart button -->
+                    <a href="<?php echo $product->add_to_cart_url(); ?>" class="btn-rounded">Add to Cart</a>
+                  </div>
                 </div>
               </div>
             </li>
@@ -81,4 +99,6 @@ get_header();
 
   </main>
 </div>
+
+
 <?php get_footer(); ?>
